@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,11 +10,25 @@
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
+    <!-- JQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/custom.css">
 </head>
 <body>
     <?php include("navbar.php") ?>
+
+    <?php 
+        if (isset($_SESSION['database_error'])) {
+            echo $_SESSION['database_error'] ;
+            unset($_SESSION['database_error']);
+        }
+        if (isset($_SESSION['registered'])) {
+            echo $_SESSION['registered'] ;
+            // unset($_SESSION['success']);
+        }
+    ?>
 
     <div class="row card_center">
         <div class="col-sm-6">

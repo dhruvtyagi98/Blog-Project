@@ -5,8 +5,8 @@ $dbUserName   = "root";
 $dbPassword   = "";
 $dbName       = "blog";
 
-$connection = mysqli_connect($dbServerName, $dbUserName, $dbPassword, $dbName);
+$connection = new mysqli($dbServerName, $dbUserName, $dbPassword, $dbName);
 
-if (!$connection) {
-  die("Connection Failed: ".mysqli_connect_error());
+if ($connection->connect_error) {
+  die("Connection Failed: ". $connection->connect_error);
 }
