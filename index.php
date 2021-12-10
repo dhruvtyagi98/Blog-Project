@@ -1,5 +1,5 @@
-<?php session_start(); ?>
 <!DOCTYPE html>
+<?php session_start(); ?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -14,22 +14,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/custom.css">
+    <link type="text/css" rel="stylesheet" href="css/custom.css">
 </head>
 <body>
+    <!-- Navbar file -->
     <?php include("navbar.php") ?>
 
-    <?php 
-        if (isset($_SESSION['database_error'])) {
-            echo $_SESSION['database_error'] ;
-            unset($_SESSION['database_error']);
-        }
-        if (isset($_SESSION['registered'])) {
-            echo $_SESSION['registered'] ;
-            // unset($_SESSION['success']);
-        }
-    ?>
-
+    <!-- Homepage content -->
     <div class="row card_center">
         <div class="col-sm-6">
             <div class="card ">
@@ -135,6 +126,10 @@
         </div>
     </div>
 
+    <!-- Notification file -->
+    <?php include("toasts.php")?>
+
+    <!-- Footer file -->
     <?php include("footer.php") ?>
 
     <!-- Bootstrap 5 -->
