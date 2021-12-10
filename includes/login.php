@@ -38,6 +38,8 @@ if (isset($_POST['login_button'])) {
             if (password_verify($password, $user['password']) == true) {
                 $_SESSION['user_id'] = $user['id'];
                 $_SESSION['username'] = $user['name'];
+                $_SESSION['email'] = $user['email'];
+                $_SESSION['profile_pic'] = $user['profile_pic'];
                 $connection->close();
                 header("Location: ../index.php");
             }
