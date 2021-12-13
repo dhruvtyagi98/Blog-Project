@@ -9,6 +9,9 @@
                 <a class="nav-link active" aria-current="page" href="index.php">Home</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="user_blogs.php">My Blogs</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="#">Users</a>
             </li>
         </ul>
@@ -40,6 +43,8 @@
 <div class="modal fade" id="login_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
+
+            <!-- Login Modal -->
             <div id="login_div">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Login</h5>
@@ -52,7 +57,7 @@
                         </div>
                         <div class="mb-4">
                             <label for="login_email">Email &nbsp;<span class="text-danger">*</span></label>
-                            <input type="email" class="form-control" id="login_email" name="email" placeholder="Enter Email">
+                            <input type="email" class="form-control" id="login_email" name="email" placeholder="Enter Email" required>
                             <div class="error email_not_found">
                                 <?php if (isset($_SESSION['email_not_found'])) echo $_SESSION['email_not_found'] ?>
                             </div>
@@ -62,7 +67,7 @@
                         </div>
                         <div class="mb-4">
                             <label for="login_password">Password &nbsp;<span class="text-danger">*</span></label>
-                            <input type="password" class="form-control" id="login_password" name="password" placeholder="Enter Password">
+                            <input type="password" class="form-control" id="login_password" name="password" placeholder="Enter Password" required>
                             <div class="error invalid_password">
                                 <?php if (isset($_SESSION['invalid_password'])) echo $_SESSION['invalid_password'] ?>
                             </div>
@@ -77,6 +82,8 @@
                     </div>
                 </form>
             </div>
+
+            <!-- Register modal -->
             <div id="register_div" style="display: none;">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Register</h5>
