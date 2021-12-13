@@ -6,10 +6,10 @@ if (isset($_POST['add_blog_button'])) {
     
     include 'dbh-inc.php';
 
-    $title = $_POST['blog_title'];
+    $title       = $_POST['blog_title'];
     $description = $_POST['blog_description'];
-    $content = $_POST['blog_content'];
-    $id = $_SESSION['user_id'];
+    $content     = $_POST['blog_content'];
+    $id          = $_SESSION['user_id'];
 
     //checking if the user submitted all the required fields or not.
     if (empty($title) || empty($description) || empty($content)) {

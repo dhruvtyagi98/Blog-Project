@@ -30,35 +30,10 @@
     </div>
     <!-- content -->
     <div class="row card_center">
-        <div class="col-sm-6">
-            <div class="card ">
-                <div class="card-header">
-                    Blogs
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">Special title treatment</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-sm-6">
-            <div class="card">
-                <div class="card-header">
-                    Blogs
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">Special title treatment</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-        </div>
-
+        <?php include 'includes/get_user_blogs.php'; ?>
     </div>
 
-    <!-- Modal -->
+    <!-- Add Blog Modal -->
     <div class="modal fade" id="blog_modal" tabindex="-1" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
@@ -103,7 +78,7 @@
     <?php include("toasts.php")?>
 
     <!-- Footer file -->
-    <?php include("footer.php") ?>
+    <!-- <?php include("footer.php") ?> -->
 
     <!-- Bootstrap 5 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
