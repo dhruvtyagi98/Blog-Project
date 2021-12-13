@@ -42,6 +42,17 @@
     </div>
 </div>
 
+<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+    <div class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true" id="toast_add_blog">
+        <div class="d-flex">
+            <div class="toast-body">
+                <?php echo $_SESSION['Blog_added'] ?>
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+    </div>
+</div>
+
 <script>
     $(document).ready(function(){
         if('<?php echo isset($_SESSION['registered']) ?>' == 1)
@@ -71,6 +82,13 @@
             var toast = new bootstrap.Toast(update_password);
             toast.show();
             '<?php unset($_SESSION['update_password']) ?>'
+        }
+        else if('<?php echo isset($_SESSION['Blog_added']) ?>' == 1)
+        {
+            var Blog_added = document.getElementById('toast_add_blog');
+            var toast = new bootstrap.Toast(Blog_added);
+            toast.show();
+            '<?php unset($_SESSION['Blog_added']) ?>'
         }
     });
 </script>
