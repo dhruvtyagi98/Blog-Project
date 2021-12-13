@@ -30,15 +30,15 @@ if (isset($_SESSION['username'])) {
                                 <div class="col">
                                     '.$_SESSION['username'].' <p class="mb-0 mt-1" style="font-size: 12px; color: #8B8B8B">'.$blog['created_at'].'</p>
                                 </div>
-                                <div class="mt-1 col-3">
+                                <div class="mt-1 col-2">
                                     <div class="btn-group">
-                                        <button type="button" class="btn btn-primary">Update</button>
-                                        <button type="button" class="btn btn-danger">Delete</button>
+                                        <button type="button" class="btn btn-primary"><ion-icon name="create-outline"></ion-icon></button>
+                                        <a href="includes/delete_blog.php?id='.$blog['id'].'" type="button" class="btn btn-danger"><ion-icon name="trash-outline"></ion-icon></a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <a class="text-decoration-none text-dark" href="">
+                        <a class="text-decoration-none text-dark" href="blog.php">
                             <div class="card-body">
                                 <h5 class="card-title">'.$blog['title'].'</h5>
                                 <p class="card-text">'.$blog['description'].'</p>

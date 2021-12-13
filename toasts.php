@@ -53,6 +53,17 @@
     </div>
 </div>
 
+<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+    <div class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true" id="toast_delete_blog">
+        <div class="d-flex">
+            <div class="toast-body">
+                <?php echo $_SESSION['blog_deleted'] ?>
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+    </div>
+</div>
+
 <script>
     $(document).ready(function(){
         if('<?php echo isset($_SESSION['registered']) ?>' == 1)
@@ -89,6 +100,13 @@
             var toast = new bootstrap.Toast(Blog_added);
             toast.show();
             '<?php unset($_SESSION['Blog_added']) ?>'
+        }
+        else if('<?php echo isset($_SESSION['blog_deleted']) ?>' == 1)
+        {
+            var blog_deleted = document.getElementById('toast_delete_blog');
+            var toast = new bootstrap.Toast(blog_deleted);
+            toast.show();
+            '<?php unset($_SESSION['blog_deleted']) ?>'
         }
     });
 </script>
