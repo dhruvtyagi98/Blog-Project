@@ -31,7 +31,7 @@
             <h3>Profile</h3>
         </div>
         <div class="card-body">
-            <form action="" method="POST" enctype="multipart/form-data">
+            <form action="includes/update_profile.php" method="POST" enctype="multipart/form-data">
                 <div class="row">
                     <div class="col-5" style="margin-left: 80px;">
                         <div class="mt-3">
@@ -51,7 +51,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="password">Old Password</label>
-                            <input class="form-control" type="password" name="old_password" id="old_password">
+                            <input class="form-control" type="password" id="old_password">
                             <div class="error" id="old_password_error">
                                 Wrong password!
                             </div>
