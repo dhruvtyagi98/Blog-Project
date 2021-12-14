@@ -28,7 +28,7 @@ if (isset($_SESSION['username'])) {
                         <div class="card-header" style="background-color: #FFE8E8">
                             <div class="row">
                                 <div class="col">
-                                    '.$_SESSION['username'].' <p class="mb-0 mt-1" style="font-size: 12px; color: #8B8B8B">'.$blog['created_at'].'</p>
+                                    '.$_SESSION['username'].' <p class="mb-0 mt-1" style="font-size: 12px; color: #8B8B8B">'.date("jS F, Y", strtotime($blog['created_at'])).'</p>
                                 </div>
                                 <div class="mt-1 col-2">
                                     <div class="btn-group">
