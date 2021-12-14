@@ -24,7 +24,7 @@ else{
                     <div class="card-header" style="background-color: #FFE8E8">
                         <div class="row">
                             <div class="col">
-                                '.$blog['name'].' <p class="mb-0 mt-1" style="font-size: 12px; color: #8B8B8B">'.$blog['created_at'].'</p>
+                                '.$blog['name'].' <p class="mb-0 mt-1" style="font-size: 12px; color: #8B8B8B">'.date("jS F, Y", strtotime($blog['created_at'])).'</p>
                             </div>
                         </div>
                     </div>

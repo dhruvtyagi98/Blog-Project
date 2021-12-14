@@ -12,8 +12,13 @@ if (isset($_POST['login_button'])) {
     $password = $_POST['password'];
 
     //checking if the user submitted all the required fields or not.
-    if (empty($email) || empty($password)) {
-        $_SESSION['login_error'] = 'Empty Fields!';
+    if (empty($email)) {
+        $_SESSION['login_email_empty'] = 'Email is Required!';
+        $connection->close();
+        header("Location: ../index.php");
+    }
+    if (empty($password)) {
+        $_SESSION['login_password_empty'] = 'password is Required!';
         $connection->close();
         header("Location: ../index.php");
     }

@@ -52,14 +52,14 @@
                 </div>
                 <form action="includes/login.php" method="post">
                     <div class="modal-body">
-                        <div class="error empty_fields_login">
-                            <?php if (isset($_SESSION['login_error'])) echo $_SESSION['login_error'] ?>
-                        </div>
                         <div class="mb-4">
                             <label for="login_email">Email &nbsp;<span class="text-danger">*</span></label>
                             <input type="email" class="form-control" id="login_email" name="email" placeholder="Enter Email" required>
                             <div class="error email_not_found">
                                 <?php if (isset($_SESSION['email_not_found'])) echo $_SESSION['email_not_found'] ?>
+                            </div>
+                            <div class="error empty_email_login">
+                                <?php if (isset($_SESSION['login_email_empty'])) echo $_SESSION['login_email_empty'] ?>
                             </div>
                             <div class="error invalid_email_login">
                                 <?php if (isset($_SESSION['invalid_email_login'])) echo $_SESSION['invalid_email_login'] ?>
@@ -70,6 +70,9 @@
                             <input type="password" class="form-control" id="login_password" name="password" placeholder="Enter Password" required>
                             <div class="error invalid_password">
                                 <?php if (isset($_SESSION['invalid_password'])) echo $_SESSION['invalid_password'] ?>
+                            </div>
+                            <div class="error empty_password_login">
+                                <?php if (isset($_SESSION['login_password_empty'])) echo $_SESSION['login_password_empty'] ?>
                             </div>
                         </div>
                         <div>
@@ -139,14 +142,15 @@
         $('#register').on('click', function(){
             $('#register_div').show();
             $('#login_div').hide();
-        })
+        });
 
         $('#login').on('click', function(){
             $('#register_div').hide();
             $('#login_div').show();
-        })
+        });
 
-        if ('<?php echo isset($_SESSION['invalid_email']) ?>' == 1) {
+        if ('<?php echo isset($_SESSION['invalid_email']) ?>' == 1) 
+        {
             $('#login_modal').modal('show');
             $('#register_div').show();
             $('#login_div').hide();
@@ -192,11 +196,23 @@
             $('.invalid_email_login').show();
             '<?php unset($_SESSION['invalid_email_login']) ?>'
         }
+        else if ('<?php echo isset($_SESSION['login_email_empty']) ?>' == 1) {
+            $('#login_modal').modal('show');
+            $('#login_div').show();
+            $('.empty_email_login').show();
+            '<?php unset($_SESSION['login_email_empty']) ?>'
+        }
         else if ('<?php echo isset($_SESSION['invalid_password']) ?>' == 1) {
             $('#login_modal').modal('show');
             $('#login_div').show();
             $('.invalid_password').show();
             '<?php unset($_SESSION['invalid_password']) ?>'
+        }
+        else if ('<?php echo isset($_SESSION['login_password_empty']) ?>' == 1) {
+            $('#login_modal').modal('show');
+            $('#login_div').show();
+            $('.empty_password_login').show();
+            '<?php unset($_SESSION['login_password_empty']) ?>'
         }
     });
 </script>
