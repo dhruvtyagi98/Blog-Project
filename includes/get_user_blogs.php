@@ -32,13 +32,13 @@ if (isset($_SESSION['username'])) {
                                 </div>
                                 <div class="mt-1 col-2">
                                     <div class="btn-group">
-                                        <button type="button" class="btn btn-primary"><ion-icon name="create-outline"></ion-icon></button>
+                                        <a href="update_blog.php?blog_id='.$blog['id'].'" type="button" class="btn btn-primary"><ion-icon name="create-outline"></ion-icon></a>
                                         <a href="includes/delete_blog.php?id='.$blog['id'].'" type="button" class="btn btn-danger"><ion-icon name="trash-outline"></ion-icon></a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <a class="text-decoration-none text-dark" href="blog.php">
+                        <a class="text-decoration-none text-dark" href="blog.php?blog_id='.$blog['id'].'">
                             <div class="card-body">
                                 <h5 class="card-title">'.$blog['title'].'</h5>
                                 <p class="card-text">'.$blog['description'].'</p>
