@@ -31,6 +31,14 @@
     <!-- Footer file -->
     <?php include("footer.php") ?>
 
+    <script>
+        $(document).ready(function(){
+            var colors = ['#FFE8E8', '#F0FEDE', '#E9FFFA', '#E9EFFF', '#F8E9FF', '#FFFCE9',]; 
+            var random_color = colors[Math.floor(Math.random() * colors.length)];
+            $('.homepage-card-header').css('background-color', random_color);
+        });
+    </script>
+
     <!-- Bootstrap 5 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
