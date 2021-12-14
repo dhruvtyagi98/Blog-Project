@@ -86,6 +86,17 @@
     </div>
 </div>
 
+<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+    <div class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true" id="toast_profile_pic_updated">
+        <div class="d-flex">
+            <div class="toast-body">
+                <?php echo $_SESSION['update_profile_pic'] ?>
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+    </div>
+</div>
+
 <script>
     $(document).ready(function(){
         if('<?php echo isset($_SESSION['registered']) ?>' == 1)
@@ -143,6 +154,13 @@
             var toast = new bootstrap.Toast(comment_added);
             toast.show();
             '<?php unset($_SESSION['comment_added']) ?>'
+        }
+        else if('<?php echo isset($_SESSION['update_profile_pic']) ?>' == 1)
+        {
+            var update_profile_pic = document.getElementById('toast_profile_pic_updated');
+            var toast = new bootstrap.Toast(update_profile_pic);
+            toast.show();
+            '<?php unset($_SESSION['update_profile_pic']) ?>'
         }
     });
 </script>
