@@ -41,6 +41,11 @@ if (isset($_POST['login_button'])) {
             $user = $result->fetch_assoc();
             
             if (password_verify($password, $user['password']) == true) {
+                // Setting status to online
+                $change_status = "UPDATE users SET status = 1 where email = '$email'";
+                $connection->query($change_status);
+
+                // Setting session variables for current user
                 $_SESSION['user_id'] = $user['id'];
                 $_SESSION['username'] = $user['name'];
                 $_SESSION['email'] = $user['email'];

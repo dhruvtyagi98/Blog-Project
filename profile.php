@@ -44,6 +44,9 @@
                             <input type="hidden" name="user_id" id="user_id" value="<?php echo $_SESSION['user_id'] ?>">
                             <label for="name">Name</label>
                             <input class="form-control" type="text" name="name" value="<?php echo $_SESSION['username'] ?>">
+                            <div class="error empty_name">
+                                <?php if (isset($_SESSION['empty_name'])) echo $_SESSION['empty_name'] ?>
+                            </div>
                         </div>
                         <div class="mb-3">
                             <label for="email">Email</label>
@@ -69,6 +72,16 @@
             </form>
         </div>
     </div>
+
+    <script>
+        $(document).ready(function(){
+            if ('<?php echo isset($_SESSION['empty_name']) ?>' == 1) 
+            {
+                $('.empty_name').show();
+                '<?php unset($_SESSION['empty_name']) ?>'
+            }
+        });
+    </script>
 
     <!-- Notification file -->
     <?php include("toasts.php")?>

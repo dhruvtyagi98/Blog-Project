@@ -37,6 +37,21 @@
         </div>
     </div>
 
+    <script>
+        $(document).ready(function(){
+            if ('<?php echo isset($_SESSION['update_title_length']) ?>' == 1) 
+            {
+                $('.update_blog_title_length').show();
+                '<?php unset($_SESSION['update_title_length']) ?>'
+            }
+            if ('<?php echo isset($_SESSION['update_description_length']) ?>' == 1) 
+            {
+                $('.update_blog_title_description').show();
+                '<?php unset($_SESSION['update_description_length']) ?>'
+            }
+        });
+    </script>
+
     <!-- Notification file -->
     <?php include("toasts.php")?>
 

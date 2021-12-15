@@ -14,10 +14,16 @@ if (isset($_SESSION['username'])) {
                 <input type="hidden" name="blog_id" value="'.$blog['id'].'">
                 <label for="update_blog_title">Blog Title &nbsp;<span class="text-danger">*</span></label>
                 <input type="text" class="form-control" name="blog_title" placeholder="Enter Title" required maxlength="50" value="'.$blog['title'].'">
+                <div class="error update_blog_title_length">
+                    <?php if (isset($_SESSION["update_title_length"])) echo $_SESSION["update_title_length"] ?>
+                </div>
             </div>
             <div class="col">
                 <label for="update_blog_description">Blog Description &nbsp;<span class="text-danger">*</span></label>
                 <input type="text" class="form-control" name="blog_description" placeholder="Enter Description" required maxlength="100" value="'.$blog['description'].'">
+                <div class="error update_blog_title_description">
+                    <?php if (isset($_SESSION["update_description_length"])) echo $_SESSION["update_description_length"] ?>
+                </div>
             </div>
         </div>
         <div class="row">
@@ -35,4 +41,3 @@ if (isset($_SESSION['username'])) {
 else{
     header("Location: ../index.php");
 }
-?>

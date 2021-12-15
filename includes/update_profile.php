@@ -13,9 +13,9 @@ if(isset($_POST['profile_button'])){
 
     //checking if the user submitted all the required fields or not.
     if (empty($name)) {
-        $_SESSION['empty_name'] = 'Please Enter Name!';
+        $_SESSION['empty_name'] = 'Name is Required!';
         $connection->close();
-        header("Location: ../index.php");
+        header("Location: ../profile.php");
     }
     else{
         if(empty($password) && empty($profile_pic['name'])){
@@ -32,8 +32,8 @@ if(isset($_POST['profile_button'])){
             //closing database connection.
             $connection->close();
 
-            //redirecting to index page.
-            header("Location: ../index.php");
+            //redirecting to profile page.
+            header("Location: ../profile.php");
         }
         elseif(!empty($password) && empty($profile_pic['name'])){
 
@@ -51,8 +51,8 @@ if(isset($_POST['profile_button'])){
             //closing database connection.
             $connection->close();
 
-            //redirecting to index page.
-            header("Location: ../index.php");
+            //redirecting to profile page.
+            header("Location: ../profile.php");
         }
         elseif(empty($password) && !empty($profile_pic['name'])){
             $path = "images/";
@@ -63,8 +63,8 @@ if(isset($_POST['profile_button'])){
                 $_SESSION['file_format'] = "Incorrect File Format!";
                 $connection->close();
 
-                //redirecting to index page.
-                header("Location: ../index.php");
+                //redirecting to profile page.
+                header("Location: ../profile.php");
             }
             else{
                 if (move_uploaded_file($profile_pic['tmp_name'], "../".$file_name)) {
@@ -81,7 +81,7 @@ if(isset($_POST['profile_button'])){
                     //closing database connection.
                     $connection->close();
 
-                    //redirecting to index page.
+                    //redirecting to profile page.
                     header("Location: ../profile.php");
                 } 
                 else {
@@ -101,8 +101,8 @@ if(isset($_POST['profile_button'])){
                 $_SESSION['file_format'] = "Incorrect File Format!";
                 $connection->close();
 
-                //redirecting to index page.
-                header("Location: ../index.php");
+                //redirecting to profile page.
+                header("Location: ../profile.php");
             }
             else{
                 if (move_uploaded_file($profile_pic['tmp_name'], "../".$file_name)) {
@@ -119,7 +119,7 @@ if(isset($_POST['profile_button'])){
                     //closing database connection.
                     $connection->close();
 
-                    //redirecting to index page.
+                    //redirecting to profile page.
                     header("Location: ../profile.php");
                 } 
                 else {
