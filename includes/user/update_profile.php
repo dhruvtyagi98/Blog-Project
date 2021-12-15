@@ -4,7 +4,7 @@ session_start();
 
 if(isset($_POST['profile_button'])){
 
-    require 'dbh-inc.php'; 
+    require '../../includes/dbh-inc.php'; 
 
     $name             = $_POST['name'];
     $id               = $_POST['user_id'];
@@ -15,9 +15,11 @@ if(isset($_POST['profile_button'])){
     if (empty($name)) {
         $_SESSION['empty_name'] = 'Name is Required!';
         $connection->close();
-        header("Location: ../profile.php");
+        header("Location: ../../profile.php");
     }
     else{
+
+        // If only the name is to be changed
         if(empty($password) && empty($profile_pic['name'])){
             $query = "UPDATE users SET name = '$name' where id = '$id'";
 
@@ -33,8 +35,10 @@ if(isset($_POST['profile_button'])){
             $connection->close();
 
             //redirecting to profile page.
-            header("Location: ../profile.php");
+            header("Location: ../../profile.php");
         }
+
+        // The password is to be changed and not the profile picture
         elseif(!empty($password) && empty($profile_pic['name'])){
 
             $hashed_password = password_hash($password, PASSWORD_DEFAULT);
@@ -52,8 +56,10 @@ if(isset($_POST['profile_button'])){
             $connection->close();
 
             //redirecting to profile page.
-            header("Location: ../profile.php");
+            header("Location: ../../profile.php");
         }
+
+        // The profile picture is to be changed and not the password. 
         elseif(empty($password) && !empty($profile_pic['name'])){
             $path = "images/";
             $file_name = $path . basename($profile_pic['name']);
@@ -64,10 +70,10 @@ if(isset($_POST['profile_button'])){
                 $connection->close();
 
                 //redirecting to profile page.
-                header("Location: ../profile.php");
+                header("Location: ../../profile.php");
             }
             else{
-                if (move_uploaded_file($profile_pic['tmp_name'], "../".$file_name)) {
+                if (move_uploaded_file($profile_pic['tmp_name'], "../../".$file_name)) {
                     $query = "UPDATE users SET name = '$name', profile_pic = '$file_name' where id = '$id'";
 
                     //quering database and checking for database error.
@@ -82,7 +88,7 @@ if(isset($_POST['profile_button'])){
                     $connection->close();
 
                     //redirecting to profile page.
-                    header("Location: ../profile.php");
+                    header("Location: ../../profile.php");
                 } 
                 else {
                     print_r($profile_pic);
@@ -90,6 +96,8 @@ if(isset($_POST['profile_button'])){
                 }
             }
         }
+
+        // Both the password and profile picture is to changed.
         else{
             $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
@@ -102,10 +110,10 @@ if(isset($_POST['profile_button'])){
                 $connection->close();
 
                 //redirecting to profile page.
-                header("Location: ../profile.php");
+                header("Location: ../../profile.php");
             }
             else{
-                if (move_uploaded_file($profile_pic['tmp_name'], "../".$file_name)) {
+                if (move_uploaded_file($profile_pic['tmp_name'], "../../".$file_name)) {
                     $query = "UPDATE users SET name = '$name', password = '$hashed_password', profile_pic = '$file_name' where id = '$id'";
 
                     //quering database and checking for database error.
@@ -120,7 +128,7 @@ if(isset($_POST['profile_button'])){
                     $connection->close();
 
                     //redirecting to profile page.
-                    header("Location: ../profile.php");
+                    header("Location: ../../profile.php");
                 } 
                 else {
                     print_r($profile_pic);
@@ -131,5 +139,5 @@ if(isset($_POST['profile_button'])){
     }
 }
 else {
-    header("Location: ../index.php");
+    header("Location: ../../index.php");
 }

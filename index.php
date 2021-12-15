@@ -22,7 +22,7 @@
 
     <!-- Homepage content -->
     <div class="row card_center">
-        <?php include 'includes/get_all_blogs.php';?>
+        <?php include 'includes/blog/get_all_blogs.php';?>
     </div>
 
     <!-- Notification file -->
@@ -46,6 +46,8 @@
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
-    
+    <!-- Custom JavaScript File -->
+    <script type="text/javascript" src="js/custom.js"></script>
+
 </body>
 </html>

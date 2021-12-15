@@ -44,7 +44,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php include 'includes/get_users.php'; ?>
+                    <?php include 'includes/user/get_users.php'; ?>
                 </tbody>
             </table>
         </div>
@@ -64,6 +64,9 @@
 
     <!-- Datatable -->
     <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+
+    <!-- Custom JavaScript File -->
+    <script type="text/javascript" src="js/custom.js"></script>
 
 </body>
 </html>
