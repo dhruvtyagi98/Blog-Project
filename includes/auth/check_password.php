@@ -1,6 +1,6 @@
 <?php 
 
-require 'dbh-inc.php';
+require '../../includes/dbh-inc.php';
 
 $password = $_POST['current_password'];
 $id       = $_POST['id'];

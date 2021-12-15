@@ -6,7 +6,7 @@ session_start();
 if(isset($_POST["register_button"])){
     
     //database connection file.
-    require 'dbh-inc.php';
+    require '../../includes/dbh-inc.php';
 
     $name             = $_POST['name'];
     $email            = $_POST['email'];
@@ -17,19 +17,19 @@ if(isset($_POST["register_button"])){
     if (empty($name) || empty($email) || empty($password)) {
         $_SESSION['register_error'] = 'Empty Fields!';
         $connection->close();
-        header("Location: ../index.php");
+        header("Location: ../../index.php");
     }
 
     elseif($confirm_password != $password){
         $_SESSION['password_mismatch'] = 'Password does Not Match!';
         $connection->close();
-        header("Location: ../index.php");
+        header("Location: ../../index.php");
     }
 
     elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $_SESSION['invalid_email'] = 'Invalid Email!';
         $connection->close();
-        header("Location: ../index.php");
+        header("Location: ../../index.php");
     }
 
     else{
@@ -41,7 +41,7 @@ if(isset($_POST["register_button"])){
         if ($result->num_rows > 0) {
             $_SESSION['email_error'] = 'Email Already Present!';
             $connection->close();
-            header("Location: ../index.php");
+            header("Location: ../../index.php");
         }
 
         else{
@@ -62,10 +62,10 @@ if(isset($_POST["register_button"])){
             $connection->close();
 
             //redirecting to index page.
-            header("Location: ../index.php");
+            header("Location: ../../index.php");
         }
     }       
 }
 else {
-    header("Location: ../index.php");
+    header("Location: ../../index.php");
 }
