@@ -7,8 +7,7 @@ $blog_id = $_GET['blog_id'];
 $query = "SELECT content, comments.created_at, user_id, blog_id, users.id, name, profile_pic FROM comments JOIN users ON comments.user_id = users.id WHERE blog_id = '$blog_id'";
 
 $result = $connection->query($query);
-
-if (empty($result)) {
+if ($result->num_rows == 0) {
     echo '<div class="mt-3">No Comments Found</div>';
     $connection->close();
 }

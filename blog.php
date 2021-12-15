@@ -27,20 +27,24 @@
         <?php include 'includes/get_blog.php' ?>
         <div class="card-body">
             <h5 class="card-title">Comments</h5>
-            <div class="row mt-3">
-                <div class="col-1">
-                    <img id="profile_pic_navbar" src="<?php echo $_SESSION['profile_pic'] ?>" style="margin-left: 25px;">
-                </div>
-                <div class="col">
-                    <form action="includes/add_comment.php" method="POST">
-                        <input type="hidden" name="blog_id" value="<?php echo isset($_GET['blog_id'])? $_GET['blog_id'] : ''; ?>">
-                        <input type="text" class="form-control" name="comment" placeholder="Add Comment...">
-                        <div class="d-flex justify-content-end">
-                            <button name="add_comment_button" type="submit" class="btn btn-primary mt-1">COMMENT</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
+            <?php
+                if (isset($_SESSION['username'])) {
+                    echo '<div class="row mt-3">
+                            <div class="col-1">
+                                <img id="profile_pic_navbar" src="'.$_SESSION['profile_pic'].'" style="margin-left: 25px;">
+                            </div>
+                            <div class="col">
+                                <form action="includes/add_comment.php" method="POST">
+                                    <input type="hidden" name="blog_id" value="'.$_GET['blog_id'].'">
+                                    <input type="text" class="form-control" name="comment" placeholder="Add Comment...">
+                                    <div class="d-flex justify-content-end">
+                                        <button name="add_comment_button" type="submit" class="btn btn-primary mt-1">COMMENT</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>';
+                }
+            ?>
             <?php include 'includes/get_comments.php' ?>
         </div>
     </div>

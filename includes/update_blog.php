@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 if (isset($_POST['update_blog_button'])) {
     
     include 'dbh-inc.php';
@@ -13,17 +15,17 @@ if (isset($_POST['update_blog_button'])) {
     if (empty($title) || empty($description) || empty($content)) {
         $_SESSION['update_blog'] = 'Empty Fields!';
         $connection->close();
-        header("Location: ../update_blog.php");
+        header("Location: ../update_blog.php?blog_id=".$blog_id."");
     }
     elseif (strlen($title) > 50) {
         $_SESSION['update_title_length'] = 'Maximum Length is 50!';
         $connection->close();
-        header("Location: ../update_blog.php");
+        header("Location: ../update_blog.php?blog_id=".$blog_id."");
     }
     elseif (strlen($description) > 100) {
         $_SESSION['update_description_length'] = 'Maximum Length is 100!';
         $connection->close();
-        header("Location: ../update_blog.php");
+        header("Location: ../update_blog.php?blog_id=".$blog_id."");
     }
     else{
         $query = "UPDATE blogs SET title = '$title', description = '$description', content = '$content' WHERE id = '$blog_id'";
@@ -39,7 +41,7 @@ if (isset($_POST['update_blog_button'])) {
         $connection->close();
 
         //redirecting to index page.
-        header("Location: ../user_blogs.php");
+        header("Location: ../user_blogs.php?blog_id=".$blog_id."");
     }
 }
 
