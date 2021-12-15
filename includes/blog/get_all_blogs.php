@@ -1,6 +1,6 @@
 <?php
 
-include 'dbh-inc.php';
+include 'includes/dbh-inc.php';
 
 $query = "SELECT blogs.id as blog_id, blogs.title, blogs.description, blogs.content, blogs.user_id, blogs.created_at, users.id, users.name FROM blogs JOIN users ON users.id = blogs.user_id";
 

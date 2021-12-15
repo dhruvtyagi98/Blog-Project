@@ -23,4 +23,11 @@ $(document).ready(function(){
             }
         });
     });
+    
+    changeStatus();
+    setInterval(changeStatus,300000);
 });
+
+function changeStatus() {
+    $.get('includes/user/change_status.php');
+}
