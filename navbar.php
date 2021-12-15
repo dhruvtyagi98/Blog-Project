@@ -12,7 +12,7 @@
                 <a class="nav-link" href="user_blogs.php">My Blogs</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Users</a>
+                <a class="nav-link" href="users.php">Users</a>
             </li>
         </ul>
         <ul class="navbar-nav">

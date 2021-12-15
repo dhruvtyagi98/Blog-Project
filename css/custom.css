@@ -41,3 +41,21 @@
     color: #B0E6E8; 
     text-align: center;
 }
+
+#online{
+    border-radius: 100%;
+    border : none;
+    height: 20px;
+    width: 20px;
+    background-color: seagreen;
+    margin: auto;
+}
+
+#offline{
+    border-radius: 100%;
+    border : none;
+    height: 20px;
+    width: 20px;
+    background-color: red;
+    margin: auto;
+}
