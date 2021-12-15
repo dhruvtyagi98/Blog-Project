@@ -2,7 +2,7 @@
 
 if (isset($_SESSION['username'])) {
     
-    include 'dbh-inc.php';
+    include 'includes/dbh-inc.php';
 
     $id = $_SESSION['user_id'];
 
@@ -33,7 +33,7 @@ if (isset($_SESSION['username'])) {
                                 <div class="mt-1 col-2">
                                     <div class="btn-group">
                                         <a href="update_blog.php?blog_id='.$blog['id'].'" type="button" class="btn btn-primary"><ion-icon name="create-outline"></ion-icon></a>
-                                        <a href="includes/delete_blog.php?id='.$blog['id'].'" type="button" class="btn btn-danger"><ion-icon name="trash-outline"></ion-icon></a>
+                                        <a href="includes/blog/delete_blog.php?id='.$blog['id'].'" type="button" class="btn btn-danger"><ion-icon name="trash-outline"></ion-icon></a>
                                     </div>
                                 </div>
                             </div>
