@@ -4,7 +4,7 @@ session_start();
 
 if (isset($_SESSION['username'])) {
     
-    include 'dbh-inc.php';
+    include '../../includes/dbh-inc.php';
 
     $id = $_GET['id'];
 
@@ -20,8 +20,8 @@ if (isset($_SESSION['username'])) {
     $connection->close();
 
     //redirecting to index page.
-    header("Location: ../user_blogs.php");
+    header("Location: ../../user_blogs.php");
 }
 else {
-    header("Location: ../index.php");
+    header("Location: ../../index.php");
 }

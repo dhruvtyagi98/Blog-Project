@@ -30,7 +30,7 @@
     </div>
     <!-- content -->
     <div class="row card_center">
-        <?php include 'includes/get_user_blogs.php'; ?>
+        <?php include 'includes/blog/get_user_blogs.php'; ?>
     </div>
 
     <!-- Add Blog Modal -->
@@ -41,7 +41,7 @@
                     <h5 class="modal-title" id="exampleModalLabel">Upload Blog</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="includes/add_blog.php" method="post">
+                <form action="includes/blog/add_blog.php" method="post">
                     <div class="modal-body">
                         <div class="error empty_fields_blogs">
                             <?php if (isset($_SESSION['upload_blog'])) echo $_SESSION['upload_blog'] ?>

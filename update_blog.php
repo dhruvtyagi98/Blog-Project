@@ -31,8 +31,8 @@
             <h3>Update Blog</h3>
         </div>
         <div class="card-body">
-            <form action="includes/update_blog.php" method="POST">
-                <?php include 'includes/get_update_blog.php'; ?>
+            <form action="includes/blog/update_blog.php" method="POST">
+                <?php include 'includes/blog/get_update_blog.php'; ?>
             </form>
         </div>
     </div>
