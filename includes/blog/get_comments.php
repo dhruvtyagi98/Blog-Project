@@ -1,6 +1,6 @@
 <?php 
 
-include 'dbh-inc.php';
+include 'includes/dbh-inc.php';
 
 $blog_id = $_GET['blog_id'];
 

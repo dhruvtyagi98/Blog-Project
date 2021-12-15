@@ -6,7 +6,7 @@ session_start();
 if (isset($_POST['login_button'])) {
     
     //database connection file.
-    require 'dbh-inc.php';
+    require '../../includes/dbh-inc.php';
 
     $email    = $_POST['email'];
     $password = $_POST['password'];
@@ -15,17 +15,17 @@ if (isset($_POST['login_button'])) {
     if (empty($email)) {
         $_SESSION['login_email_empty'] = 'Email is Required!';
         $connection->close();
-        header("Location: ../index.php");
+        header("Location: ../../index.php");
     }
     if (empty($password)) {
         $_SESSION['login_password_empty'] = 'password is Required!';
         $connection->close();
-        header("Location: ../index.php");
+        header("Location: ../../index.php");
     }
     elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $_SESSION['invalid_email_login'] = 'Invalid Email!';
         $connection->close();
-        header("Location: ../index.php");
+        header("Location: ../../index.php");
     }
     else{
 
@@ -35,7 +35,7 @@ if (isset($_POST['login_button'])) {
         if ($result->num_rows == 0) {
             $_SESSION['email_not_found'] = 'Email Not Found!';
             $connection->close();
-            header("Location: ../index.php");
+            header("Location: ../../index.php");
         }
         else{
             $user = $result->fetch_assoc();
@@ -51,12 +51,12 @@ if (isset($_POST['login_button'])) {
                 $_SESSION['email'] = $user['email'];
                 $_SESSION['profile_pic'] = $user['profile_pic'];
                 $connection->close();
-                header("Location: ../index.php");
+                header("Location: ../../index.php");
             }
             else{
                 $_SESSION['invalid_password'] = 'Invalid Password';
                 $connection->close();
-                header("Location: ../index.php");
+                header("Location: ../../index.php");
             }
         }
     }

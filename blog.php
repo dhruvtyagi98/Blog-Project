@@ -24,7 +24,7 @@
 
     <!-- Profile content -->
     <div class="card" id="profile">
-        <?php include 'includes/get_blog.php' ?>
+        <?php include 'includes/blog/get_blog.php' ?>
         <div class="card-body">
             <h5 class="card-title">Comments</h5>
             <?php
@@ -34,7 +34,7 @@
                                 <img id="profile_pic_navbar" src="'.$_SESSION['profile_pic'].'" style="margin-left: 25px;">
                             </div>
                             <div class="col">
-                                <form action="includes/add_comment.php" method="POST">
+                                <form action="includes/blog/add_comment.php" method="POST">
                                     <input type="hidden" name="blog_id" value="'.$_GET['blog_id'].'">
                                     <input type="text" class="form-control" name="comment" placeholder="Add Comment...">
                                     <div class="d-flex justify-content-end">
@@ -45,7 +45,7 @@
                         </div>';
                 }
             ?>
-            <?php include 'includes/get_comments.php' ?>
+            <?php include 'includes/blog/get_comments.php' ?>
         </div>
     </div>
 

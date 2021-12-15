@@ -2,7 +2,7 @@
 
 session_start();
 
-include 'dbh-inc.php';
+include '../../includes/dbh-inc.php';
 
 // Changing user Status to offline
 $email = $_SESSION['email'];
@@ -17,4 +17,4 @@ unset($_SESSION['email']);
 unset($_SESSION['profile_pic']);
 
 // Redirecting to homepage
-header("Location: ../index.php");
+header("Location: ../../index.php");

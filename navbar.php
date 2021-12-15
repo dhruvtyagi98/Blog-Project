@@ -30,7 +30,7 @@
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="profile.php">Profile</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="includes/logout.php">Logout</a></li>
+                            <li><a class="dropdown-item" href="includes/auth/logout.php">Logout</a></li>
                         </ul>
                     </li>';
                 }
@@ -50,7 +50,7 @@
                     <h5 class="modal-title" id="exampleModalLabel">Login</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="includes/login.php" method="post">
+                <form action="includes/auth/login.php" method="post">
                     <div class="modal-body">
                         <div class="mb-4">
                             <label for="login_email">Email &nbsp;<span class="text-danger">*</span></label>
@@ -92,7 +92,7 @@
                     <h5 class="modal-title" id="exampleModalLabel">Register</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="includes/register.php" method="post">
+                <form action="includes/auth/register.php" method="post">
                     <div class="modal-body">
                         <div class="error empty_fields_register">
                             <?php if (isset($_SESSION['register_error'])) echo $_SESSION['register_error'] ?>

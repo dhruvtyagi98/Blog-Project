@@ -5,7 +5,7 @@ $(document).ready(function(){
         var current_password = $(this).val();
         $.ajax(
         {
-            url:"includes/check_password.php",
+            url:"includes/auth/check_password.php",
             type:'POST',
             data:{'id':id,'current_password':current_password},
             success : function(response)
