@@ -25,7 +25,7 @@ $(document).ready(function(){
     });
     
     changeStatus();
-    setInterval(changeStatus,300000);
+    setInterval(changeStatus,2000);
 });
 
 function changeStatus() {

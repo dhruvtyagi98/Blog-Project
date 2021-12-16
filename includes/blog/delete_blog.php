@@ -6,9 +6,10 @@ if (isset($_SESSION['username'])) {
     
     include '../../includes/dbh-inc.php';
 
-    $id = $_GET['id'];
+    $blog_id = $_GET['id'];
+    $user_id = $_SESSION['user_id'];
 
-    $delete = "DELETE FROM blogs where id = '$id'";
+    $delete = "DELETE FROM blogs where id = '$blog_id' AND user_id = '$user_id'";
 
     if ($connection->query($delete) == true) 
             $_SESSION['blog_deleted'] = 'Blog Deleted Successfully!';

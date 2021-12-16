@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <?php 
     session_start();
+    include 'routes/web.php';
     if(!isset($_SESSION['username'])){
-        header("Location: ../test/index.php");
+        header("Location: ../test/".$homepage);
     } 
 ?>
 <html lang="en">
@@ -23,14 +24,14 @@
 </head>
 <body>
     <!-- Navbar file -->
-    <?php include("navbar.php") ?>
+    <?php include($navbar) ?>
 
     <div class="mt-4 d-flex justify-content-end" style="margin-right: 45px;">
         <button class="btn btn-success" type="button" data-bs-target="#blog_modal" data-bs-toggle="modal" style="border-radius: 12px; padding-block: 15px;"> <b>+</b> Create Blog</button>
     </div>
     <!-- content -->
     <div class="row card_center">
-        <?php include 'includes/blog/get_user_blogs.php'; ?>
+        <?php include $get_user_blogs ?>
     </div>
 
     <!-- Add Blog Modal -->
@@ -41,7 +42,7 @@
                     <h5 class="modal-title" id="exampleModalLabel">Upload Blog</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="includes/blog/add_blog.php" method="post">
+                <form action="<?php echo $add_blog ?>" method="post">
                     <div class="modal-body">
                         <div class="error empty_fields_blogs">
                             <?php if (isset($_SESSION['upload_blog'])) echo $_SESSION['upload_blog'] ?>
@@ -75,10 +76,10 @@
     </div>
 
     <!-- Notification file -->
-    <?php include("toasts.php")?>
+    <?php include($toasts)?>
 
     <!-- Footer file -->
-    <!-- <?php include("footer.php") ?> -->
+    <!-- <?php include($footer) ?> -->
 
     <!-- Bootstrap 5 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>

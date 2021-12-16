@@ -5,8 +5,9 @@ session_start();
 // checking if the user came from form subit or not.
 if(isset($_POST["register_button"])){
     
+    include '../../routes/web.php';
     //database connection file.
-    require '../../includes/dbh-inc.php';
+    require '../../'.$db_connection;
 
     $name             = $_POST['name'];
     $email            = $_POST['email'];
@@ -17,19 +18,19 @@ if(isset($_POST["register_button"])){
     if (empty($name) || empty($email) || empty($password)) {
         $_SESSION['register_error'] = 'Empty Fields!';
         $connection->close();
-        header("Location: ../../index.php");
+        header("Location: ../../".$homepage);
     }
 
     elseif($confirm_password != $password){
         $_SESSION['password_mismatch'] = 'Password does Not Match!';
         $connection->close();
-        header("Location: ../../index.php");
+        header("Location: ../../".$homepage);
     }
 
     elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $_SESSION['invalid_email'] = 'Invalid Email!';
         $connection->close();
-        header("Location: ../../index.php");
+        header("Location: ../../".$homepage);
     }
 
     else{
@@ -41,7 +42,7 @@ if(isset($_POST["register_button"])){
         if ($result->num_rows > 0) {
             $_SESSION['email_error'] = 'Email Already Present!';
             $connection->close();
-            header("Location: ../../index.php");
+            header("Location: ../../".$homepage);
         }
 
         else{
@@ -62,10 +63,10 @@ if(isset($_POST["register_button"])){
             $connection->close();
 
             //redirecting to index page.
-            header("Location: ../../index.php");
+            header("Location: ../../".$homepage);
         }
     }       
 }
 else {
-    header("Location: ../../index.php");
+    header("Location: ../../".$homepage);
 }
