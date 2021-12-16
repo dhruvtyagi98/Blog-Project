@@ -2,7 +2,9 @@
 
 if (isset($_SESSION['username'])) {
     
-    include 'includes/dbh-inc.php';
+    include 'routes/web.php';
+    //database connection file.
+    require $db_connection;
 
     $query = "SELECT * FROM users";
 
@@ -45,7 +47,7 @@ function checkLastActivity($timestamp)
 {
     $current_time    = strtotime(date("Y-m-d H:i:s"));
     $last_activity   = strtotime($timestamp);
-    $time_difference = round(abs($last_activity - $current_time) / 60,2);
+    $time_difference = round(abs($last_activity - $current_time), 2);
     
     if ($time_difference > 5) 
         return false;

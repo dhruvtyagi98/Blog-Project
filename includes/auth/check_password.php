@@ -1,6 +1,7 @@
 <?php 
 
-require '../../includes/dbh-inc.php';
+include '../../routes/web.php';
+require '../../'.$db_connection;
 
 $password = $_POST['current_password'];
 $id       = $_POST['id'];

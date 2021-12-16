@@ -1,6 +1,8 @@
 <?php
 
-include 'includes/dbh-inc.php';
+include 'routes/web.php';
+//database connection file.
+require $db_connection;
 
 $id = $_GET['blog_id'];
 

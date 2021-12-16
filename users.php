@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <?php 
     session_start();
+    include 'routes/web.php';
     if(!isset($_SESSION['username'])){
-        header("Location: ../test/index.php");
+        header("Location: ../test/".$homepage);
     } 
 ?>
 <html lang="en">
@@ -26,7 +27,7 @@
 </head>
 <body>
     <!-- Navbar file -->
-    <?php include("navbar.php") ?>
+    <?php include($navbar) ?>
 
     <!-- content -->
     <div class="card" id="profile">
@@ -44,7 +45,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php include 'includes/user/get_users.php'; ?>
+                    <?php include $get_users ?>
                 </tbody>
             </table>
         </div>
@@ -57,7 +58,7 @@
     </script>
 
     <!-- Notification file -->
-    <?php include("toasts.php")?>
+    <?php include($toasts)?>
 
     <!-- Bootstrap 5 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>

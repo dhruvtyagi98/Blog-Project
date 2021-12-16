@@ -6,13 +6,13 @@
         </button>
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+                <a class="nav-link navbar_link active" aria-current="page" href="<?php echo $homepage; ?>">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="user_blogs.php">My Blogs</a>
+                <a class="nav-link navbar_link" href="user_blogs.php">My Blogs</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="users.php">Users</a>
+                <a class="nav-link navbar_link" href="users.php">Users</a>
             </li>
         </ul>
         <ul class="navbar-nav">
@@ -137,7 +137,18 @@
 </div>
 
 <script>
-    $(document).ready(function() {
+    $(document).ready(function() {       
+
+        // Add and remove active class from navlinks
+        var path_name = window.location.pathname.split('/').pop();
+        var nav_links = $('.navbar_link');
+        for (let i = 0; i < nav_links.length; i++) 
+        {
+            nav_links[i].className = nav_links[i].className.replace(" active", "");
+
+            if (path_name == nav_links[i].href.split('/').pop()) 
+                nav_links[i].className += " active";
+        }
 
         $('#register').on('click', function(){
             $('#register_div').show();

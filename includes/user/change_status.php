@@ -4,7 +4,9 @@ session_start();
 
 if (isset($_SESSION['username'])) {
     
-    include '../../includes/dbh-inc.php';
+    include '../../routes/web.php';
+    //database connection file.
+    require '../../'.$db_connection;
 
     $id = $_SESSION['user_id'];
 

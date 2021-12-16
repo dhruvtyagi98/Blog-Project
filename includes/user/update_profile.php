@@ -4,7 +4,9 @@ session_start();
 
 if(isset($_POST['profile_button'])){
 
-    require '../../includes/dbh-inc.php'; 
+    include '../../routes/web.php';
+    //database connection file.
+    require '../../'.$db_connection;
 
     $name             = $_POST['name'];
     $id               = $_POST['user_id'];
@@ -15,7 +17,7 @@ if(isset($_POST['profile_button'])){
     if (empty($name)) {
         $_SESSION['empty_name'] = 'Name is Required!';
         $connection->close();
-        header("Location: ../../profile.php");
+        header("Location: ../../".$profile_page);
     }
     else{
 
@@ -35,7 +37,7 @@ if(isset($_POST['profile_button'])){
             $connection->close();
 
             //redirecting to profile page.
-            header("Location: ../../profile.php");
+            header("Location: ../../".$profile_page);
         }
 
         // The password is to be changed and not the profile picture
@@ -56,7 +58,7 @@ if(isset($_POST['profile_button'])){
             $connection->close();
 
             //redirecting to profile page.
-            header("Location: ../../profile.php");
+            header("Location: ../../".$profile_page);
         }
 
         // The profile picture is to be changed and not the password. 
@@ -70,7 +72,7 @@ if(isset($_POST['profile_button'])){
                 $connection->close();
 
                 //redirecting to profile page.
-                header("Location: ../../profile.php");
+                header("Location: ../../".$profile_page);
             }
             else{
                 if (move_uploaded_file($profile_pic['tmp_name'], "../../".$file_name)) {
@@ -88,7 +90,7 @@ if(isset($_POST['profile_button'])){
                     $connection->close();
 
                     //redirecting to profile page.
-                    header("Location: ../../profile.php");
+                    header("Location: ../../".$profile_page);
                 } 
                 else {
                     print_r($profile_pic);
@@ -110,7 +112,7 @@ if(isset($_POST['profile_button'])){
                 $connection->close();
 
                 //redirecting to profile page.
-                header("Location: ../../profile.php");
+                header("Location: ../../".$profile_page);
             }
             else{
                 if (move_uploaded_file($profile_pic['tmp_name'], "../../".$file_name)) {
@@ -128,7 +130,7 @@ if(isset($_POST['profile_button'])){
                     $connection->close();
 
                     //redirecting to profile page.
-                    header("Location: ../../profile.php");
+                    header("Location: ../../".$profile_page);
                 } 
                 else {
                     print_r($profile_pic);

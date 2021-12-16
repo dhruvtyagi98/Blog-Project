@@ -4,7 +4,9 @@ session_start();
 
 if (isset($_POST['add_blog_button'])) {
     
-    include '../../includes/dbh-inc.php';
+    include '../../routes/web.php';
+    //database connection file.
+    require '../../'.$db_connection;
 
     $title       = $_POST['blog_title'];
     $description = $_POST['blog_description'];
@@ -15,17 +17,17 @@ if (isset($_POST['add_blog_button'])) {
     if (empty($title) || empty($description) || empty($content)) {
         $_SESSION['upload_blog'] = 'Empty Fields!';
         $connection->close();
-        header("Location: ....//user_blogs.php");
+        header("Location: ../../".$user_blogs_page);
     }
     elseif (strlen($title) > 50) {
         $_SESSION['title_length'] = 'Maximum Length is 50!';
         $connection->close();
-        header("Location: ../../user_blogs.php");
+        header("Location: ../../".$user_blogs_page);
     }
     elseif (strlen($description) > 100) {
         $_SESSION['description_length'] = 'Maximum Length is 100!';
         $connection->close();
-        header("Location: ../../user_blogs.php");
+        header("Location: ../../".$user_blogs_page);
     }
     else{
         $query = "INSERT INTO blogs (title, description, content, user_id) VALUES ('$title', '$description', '$content', '$id')";
@@ -41,9 +43,9 @@ if (isset($_POST['add_blog_button'])) {
         $connection->close();
 
         //redirecting to index page.
-        header("Location: ../../user_blogs.php");
+        header("Location: ../../".$user_blogs_page);
     }
 }
 else {
-    header("Location: ../../index.php");
+    header("Location: ../../".$homepage);
 }

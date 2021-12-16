@@ -17,8 +17,9 @@
     <link type="text/css" rel="stylesheet" href="css/custom.css">
 </head>
 <body>
+    <?php include 'routes/web.php';?>
     <!-- Navbar file -->
-    <?php include("navbar.php") ?>
+    <?php include($navbar) ?>
 
     <!-- Homepage content -->
     <div class="row card_center">
@@ -26,10 +27,10 @@
     </div>
 
     <!-- Notification file -->
-    <?php include("toasts.php")?>
+    <?php include($toasts)?>
 
     <!-- Footer file -->
-    <?php include("footer.php") ?>
+    <?php include($footer) ?>
 
     <script>
         $(document).ready(function(){

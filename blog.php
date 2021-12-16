@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <?php 
     session_start();
+    include 'routes/web.php';
 ?>
 <html lang="en">
 <head>
@@ -20,11 +21,11 @@
 </head>
 <body>
     <!-- Navbar file -->
-    <?php include("navbar.php") ?>
+    <?php include($navbar) ?>
 
     <!-- Profile content -->
     <div class="card" id="profile">
-        <?php include 'includes/blog/get_blog.php' ?>
+        <?php include $get_blog ?>
         <div class="card-body">
             <h5 class="card-title">Comments</h5>
             <?php
@@ -34,7 +35,7 @@
                                 <img id="profile_pic_navbar" src="'.$_SESSION['profile_pic'].'" style="margin-left: 25px;">
                             </div>
                             <div class="col">
-                                <form action="includes/blog/add_comment.php" method="POST">
+                                <form action="'.$add_comment.'" method="POST">
                                     <input type="hidden" name="blog_id" value="'.$_GET['blog_id'].'">
                                     <input type="text" class="form-control" name="comment" placeholder="Add Comment...">
                                     <div class="d-flex justify-content-end">
@@ -45,15 +46,15 @@
                         </div>';
                 }
             ?>
-            <?php include 'includes/blog/get_comments.php' ?>
+            <?php include $get_comments ?>
         </div>
     </div>
 
     <!-- Notification file -->
-    <?php include("toasts.php")?>
+    <?php include($toasts)?>
 
     <!-- Footer file -->
-    <!-- <?php include("footer.php") ?> -->
+    <!-- <?php include($footer) ?> -->
 
     <!-- Bootstrap 5 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>

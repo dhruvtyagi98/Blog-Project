@@ -1,7 +1,10 @@
 <?php 
 
 if (isset($_SESSION['username'])) {
-    include 'includes/dbh-inc.php';
+
+    include 'routes/web.php';
+    //database connection file.
+    require $db_connection;
 
     $blog_id = isset($_GET['blog_id'])? $_GET['blog_id'] : '';
 

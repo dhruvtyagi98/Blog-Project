@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <?php 
     session_start();
+    include 'routes/web.php';
     if(!isset($_SESSION['username'])){
-        header("Location: ../test/index.php");
+        header("Location: ../test/".$homepage);
     } 
 ?>
 <html lang="en">
@@ -23,7 +24,7 @@
 </head>
 <body>
     <!-- Navbar file -->
-    <?php include("navbar.php") ?>
+    <?php include($navbar) ?>
 
     <!-- Profile content -->
     <div class="card" id="profile">
@@ -32,7 +33,7 @@
         </div>
         <div class="card-body">
             <form action="includes/blog/update_blog.php" method="POST">
-                <?php include 'includes/blog/get_update_blog.php'; ?>
+                <?php include $get_update_blog ?>
             </form>
         </div>
     </div>
@@ -53,10 +54,10 @@
     </script>
 
     <!-- Notification file -->
-    <?php include("toasts.php")?>
+    <?php include($toasts)?>
 
     <!-- Footer file -->
-    <!-- <?php include("footer.php") ?> -->
+    <!-- <?php include($footer) ?> -->
 
     <!-- Bootstrap 5 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
