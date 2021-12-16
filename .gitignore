@@ -1,0 +1,4 @@
+vendor/
+composer.lock
+db_seeder.php
+images/
