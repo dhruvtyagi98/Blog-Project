@@ -4,9 +4,9 @@ include '../../routes/web.php';
 require '../../'.$db_connection;
 
 $password = $_POST['current_password'];
-$id       = $_POST['id'];
+$email       = $_POST['email'];
 
-$query = "SELECT * FROM users WHERE id = '$id'";
+$query = "SELECT * FROM users WHERE email = '$email'";
 $result = $connection->query($query);
 
 $user = $result->fetch_assoc();

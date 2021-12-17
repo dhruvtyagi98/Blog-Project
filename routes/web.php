@@ -31,4 +31,4 @@ $get_users          = "includes/user/get_users.php";
 $user_controller    = "includes/user/user_controller.php";
 
 // Database connection file route
-$db_connection      = "includes/dbh-inc.php";
+$db_connection      = "includes/models/dbh-inc.php";
