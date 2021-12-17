@@ -42,7 +42,7 @@
                     <h5 class="modal-title" id="exampleModalLabel">Upload Blog</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="<?php echo $add_blog ?>" method="post">
+                <form action="<?php echo $blog_controller ?>" method="post">
                     <div class="modal-body">
                         <div class="error empty_fields_blogs">
                             <?php if (isset($_SESSION['upload_blog'])) echo $_SESSION['upload_blog'] ?>

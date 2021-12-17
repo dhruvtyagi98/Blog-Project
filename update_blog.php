@@ -32,7 +32,7 @@
             <h3>Update Blog</h3>
         </div>
         <div class="card-body">
-            <form action="includes/blog/update_blog.php" method="POST">
+            <form action="<?php echo $blog_controller ?>" method="POST">
                 <?php include $get_update_blog ?>
             </form>
         </div>

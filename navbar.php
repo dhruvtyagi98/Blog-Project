@@ -9,10 +9,10 @@
                 <a class="nav-link navbar_link active" aria-current="page" href="<?php echo $homepage; ?>">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link navbar_link" href="user_blogs.php">My Blogs</a>
+                <a class="nav-link navbar_link" href="<?php echo $user_blogs_page; ?>">My Blogs</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link navbar_link" href="users.php">Users</a>
+                <a class="nav-link navbar_link" href="<?php echo $all_users_page; ?>">Users</a>
             </li>
         </ul>
         <ul class="navbar-nav">
@@ -30,7 +30,7 @@
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="profile.php">Profile</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="includes/auth/logout.php">Logout</a></li>
+                            <li><a class="dropdown-item" href="'.$auth.'?logout='.$_SESSION['user_id'].'">Logout</a></li>
                         </ul>
                     </li>';
                 }
@@ -50,7 +50,7 @@
                     <h5 class="modal-title" id="exampleModalLabel">Login</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="includes/auth/login.php" method="post">
+                <form action="<?php echo $auth; ?>" method="post">
                     <div class="modal-body">
                         <div class="mb-4">
                             <label for="login_email">Email &nbsp;<span class="text-danger">*</span></label>
@@ -92,7 +92,7 @@
                     <h5 class="modal-title" id="exampleModalLabel">Register</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="includes/auth/register.php" method="post">
+                <form action="<?php echo $auth; ?>" method="post">
                     <div class="modal-body">
                         <div class="error empty_fields_register">
                             <?php if (isset($_SESSION['register_error'])) echo $_SESSION['register_error'] ?>

@@ -32,7 +32,7 @@
             <h3>Profile</h3>
         </div>
         <div class="card-body">
-            <form action="<?php echo $update_profile ?>" method="POST" enctype="multipart/form-data">
+            <form action="<?php echo $user_controller ?>" method="POST" enctype="multipart/form-data">
                 <div class="row">
                     <div class="col-5" style="margin-left: 80px;">
                         <div class="mt-3">

@@ -35,7 +35,7 @@ if (isset($_SESSION['username'])) {
                                 <div class="mt-1 col-2">
                                     <div class="btn-group">
                                         <a href="'.$update_blog_page.'?blog_id='.$blog['id'].'" type="button" class="btn btn-primary"><ion-icon name="create-outline"></ion-icon></a>
-                                        <a href="'.$delete_blog.'?id='.$blog['id'].'" type="button" class="btn btn-danger"><ion-icon name="trash-outline"></ion-icon></a>
+                                        <a href="'.$blog_controller.'?delete_id='.$blog['id'].'" type="button" class="btn btn-danger"><ion-icon name="trash-outline"></ion-icon></a>
                                     </div>
                                 </div>
                             </div>

@@ -1,6 +1,8 @@
 <?php
 
 session_start();
+
+// Add comment
 if (isset($_POST['add_comment_button'])) {
     
     include '../../routes/web.php';
