@@ -29,5 +29,5 @@ $(document).ready(function(){
 });
 
 function changeStatus() {
-    $.get('includes/user/change_status.php');
+    $.get('includes/user/user_controller.php?change_status=1');
 }

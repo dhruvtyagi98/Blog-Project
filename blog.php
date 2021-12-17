@@ -35,7 +35,7 @@
                                 <img id="profile_pic_navbar" src="'.$_SESSION['profile_pic'].'" style="margin-left: 25px;">
                             </div>
                             <div class="col">
-                                <form action="'.$add_comment.'" method="POST">
+                                <form action="'.$comment_controller.'" method="POST">
                                     <input type="hidden" name="blog_id" value="'.$_GET['blog_id'].'">
                                     <input type="text" class="form-control" name="comment" placeholder="Add Comment...">
                                     <div class="d-flex justify-content-end">
