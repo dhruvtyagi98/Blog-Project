@@ -1,8 +1,8 @@
 <?php
 
-include 'routes/web.php';
+include '../../routes/web.php';
 //database connection file.
-require $db_connection;
+require '../../'.$db_connection;
 
 $id = $_GET['blog_id'];
 

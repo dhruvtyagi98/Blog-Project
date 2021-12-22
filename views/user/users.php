@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php 
     session_start();
-    include 'routes/web.php';
+    include '../../routes/web.php';
     if(!isset($_SESSION['username'])){
         header("Location: ../test/".$homepage);
     } 
@@ -23,7 +23,7 @@
     <link href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link type="text/css" rel="stylesheet" href="css/custom.css">
+    <link type="text/css" rel="stylesheet" href="../../css/custom.css">
 </head>
 <body>
     <!-- Navbar file -->
@@ -45,7 +45,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php include $get_users ?>
+                    <?php include '../../'.$get_users ?>
                 </tbody>
             </table>
         </div>
@@ -67,7 +67,7 @@
     <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 
     <!-- Custom JavaScript File -->
-    <script type="text/javascript" src="js/custom.js"></script>
+    <script type="text/javascript" src="../../js/custom.js"></script>
 
 </body>
 </html>

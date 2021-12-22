@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php 
     session_start();
-    include 'routes/web.php';
+    include '../../routes/web.php';
     if(!isset($_SESSION['username'])){
         header("Location: ../test/".$homepage);
     } 
@@ -20,7 +20,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <!-- Custom CSS -->
-    <link type="text/css" rel="stylesheet" href="css/custom.css">
+    <link type="text/css" rel="stylesheet" href="../../css/custom.css">
 </head>
 <body>
     <!-- Navbar file -->
@@ -31,7 +31,7 @@
     </div>
     <!-- content -->
     <div class="row card_center">
-        <?php include $get_user_blogs ?>
+        <?php include '../../'.$get_user_blogs ?>
     </div>
 
     <!-- Add Blog Modal -->
@@ -42,7 +42,7 @@
                     <h5 class="modal-title" id="exampleModalLabel">Upload Blog</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="<?php echo $blog_controller ?>" method="post">
+                <form action="../../<?php echo $blog_controller ?>" method="post">
                     <div class="modal-body">
                         <div class="error empty_fields_blogs">
                             <?php if (isset($_SESSION['upload_blog'])) echo $_SESSION['upload_blog'] ?>
@@ -89,7 +89,7 @@
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
     <!-- Custom JavaScript File -->
-    <script type="text/javascript" src="js/custom.js"></script>
+    <script type="text/javascript" src="../../js/custom.js"></script>
 
 </body>
 </html>

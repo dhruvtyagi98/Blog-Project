@@ -1,8 +1,8 @@
 <?php 
 
-include 'routes/web.php';
+include '../../routes/web.php';
 //database connection file.
-require $db_connection;
+require '../../'.$db_connection;
 
 $blog_id = $_GET['blog_id'];
 
@@ -19,7 +19,7 @@ else{
     foreach ($comments as $comment) {
         echo '<div class="row">
                 <div class="col-1">
-                    <img class="mt-4" id="profile_pic_navbar" src="'.$comment['profile_pic'].'" style="margin-left: 25px;">
+                    <img class="mt-4" id="profile_pic_navbar" src="../../'.$comment['profile_pic'].'" style="margin-left: 25px;">
                 </div>
                 <div class="col-5">
                     <div class="row mt-3" style="color: #B6B6B6;">

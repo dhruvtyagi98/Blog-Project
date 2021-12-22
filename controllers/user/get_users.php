@@ -2,9 +2,9 @@
 
 if (isset($_SESSION['username'])) {
     
-    include 'routes/web.php';
+    include '../../routes/web.php';
     //database connection file.
-    require $db_connection;
+    require '../../'.$db_connection;
 
     $query = "SELECT * FROM users";
 
@@ -30,7 +30,7 @@ if (isset($_SESSION['username'])) {
     }
 }
 else{
-    header("Location: ../../index.php");
+    header("Location: ../../views/homepage/index.php");
 }
 
 /**

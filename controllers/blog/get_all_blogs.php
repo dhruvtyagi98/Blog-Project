@@ -1,8 +1,8 @@
 <?php
 
-include 'routes/web.php';
+include '../../routes/web.php';
 //database connection file.
-require $db_connection;
+require '../../'.$db_connection;
 
 $query = "SELECT blogs.id as blog_id, blogs.title, blogs.description, blogs.content, blogs.user_id, blogs.created_at, users.id, users.name FROM blogs JOIN users ON users.id = blogs.user_id";
 
@@ -30,7 +30,7 @@ else{
                             </div>
                         </div>
                     </div>
-                    <a class="text-decoration-none text-dark" href="'.$blog_page.'?blog_id='.$blog['blog_id'].'">
+                    <a class="text-decoration-none text-dark" href="../../'.$blog_page.'?blog_id='.$blog['blog_id'].'">
                         <div class="card-body">
                             <h5 class="card-title">'.$blog['title'].'</h5>
                             <p class="card-text">'.$blog['description'].'</p>
