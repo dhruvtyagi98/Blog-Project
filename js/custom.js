@@ -1,13 +1,13 @@
 $(document).ready(function(){
     $("#old_password").focusout(function()
     {
-        var id = $("#user_id").val();
+        var email = $("#user_email").val();
         var current_password = $(this).val();
         $.ajax(
         {
             url: "../../controllers/auth/check_password.php",
             type:'POST',
-            data:{'id':id,'current_password':current_password},
+            data:{'email':email,'current_password':current_password},
             success : function(response)
             {
                 if(response == false)

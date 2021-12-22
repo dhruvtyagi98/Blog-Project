@@ -3,16 +3,14 @@
 if (isset($_SESSION['username'])) {
     
     include '../../routes/web.php';
-    //database connection file.
-    require '../../'.$db_connection;
+    include '../../models/user_model.php';
 
-    $query = "SELECT * FROM users";
+    $user = new user();
 
-    $result = $connection->query($query);
+    $result = $user->getAllUsers();
 
     if ($result->num_rows == 0) {
         echo '';
-        $connection->close();
     }
     else{
         $users  = $result->fetch_all(MYSQLI_ASSOC); 
@@ -26,7 +24,6 @@ if (isset($_SESSION['username'])) {
                     <td>'.(($status == true)? '<div id="online"></div>':'<div id="offline"></div>').'</td>
                 </tr>';
         }
-        $connection->close();
     }
 }
 else{

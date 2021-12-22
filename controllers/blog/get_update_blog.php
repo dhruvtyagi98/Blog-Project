@@ -3,13 +3,13 @@
 if (isset($_SESSION['username'])) {
 
     include '../../routes/web.php';
-    //database connection file.
-    require '../../'.$db_connection;
+    include '../../models/blog_model.php';
+
 
     $blog_id = isset($_GET['blog_id'])? $_GET['blog_id'] : '';
 
-    $query  = "SELECT * FROM blogs WHERE id = '$blog_id'";
-    $result = $connection->query($query);
+    $blog = new blog();
+    $result = $blog->getBlog($blog_id);
     $blog   = $result->fetch_assoc();
 
     echo '<div class="row">
@@ -38,8 +38,6 @@ if (isset($_SESSION['username'])) {
         <div class="d-flex justify-content-end">
             <button class="btn btn-primary mt-3" type="submit" name="update_blog_button">Update</button>
         </div>';
-
-    $connection->close();
 }
 else{
     header("Location: ../index.php");

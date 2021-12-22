@@ -1,14 +1,12 @@
 <?php
 
 include '../../routes/web.php';
-//database connection file.
-require '../../'.$db_connection;
+include '../../models/blog_model.php';
 
 $id = $_GET['blog_id'];
 
-$query = "SELECT * FROM blogs WHERE id = '$id'";
-
-$result = $connection->query($query);
+$blog = new blog();
+$result = $blog->getBlog($id);
 $blog = $result->fetch_assoc();
 $_SESSION['blog_user_id'] = $blog['user_id'];
 
@@ -21,5 +19,4 @@ echo '<div class="card-header" style="background-color: #EBFCE5;">
         <div class="mt-4">'. $blog['content'] .'</div>
     </div>';
 
-$connection->close();
 ?>

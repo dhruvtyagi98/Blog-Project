@@ -3,14 +3,13 @@
 if (isset($_SESSION['username'])) {
     
     include '../../routes/web.php';
-    //database connection file.
-    require '../../'.$db_connection;
+    include '../../models/blog_model.php';
 
     $id = $_SESSION['user_id'];
 
-    $query = "SELECT * FROM blogs WHERE user_id = '$id'";
+    $blog = new blog();
 
-    $result = $connection->query($query);
+    $result = $blog->getUserBlog($id);
     if ($result->num_rows == 0) {
         echo '<div>
                 <div class="card">
@@ -19,7 +18,6 @@ if (isset($_SESSION['username'])) {
                     </div>
                 </div>
             </div>';
-        $connection->close();
     }
     else{
         $blogs = $result->fetch_all(MYSQLI_ASSOC);
@@ -49,7 +47,6 @@ if (isset($_SESSION['username'])) {
                     </div>
                 </div>';
         }
-        $connection->close();
     }
 }
 

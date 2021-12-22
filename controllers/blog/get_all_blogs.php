@@ -1,12 +1,10 @@
 <?php
 
-include '../../routes/web.php';
-//database connection file.
-require '../../'.$db_connection;
+include '../../models/blog_model.php';
 
-$query = "SELECT blogs.id as blog_id, blogs.title, blogs.description, blogs.content, blogs.user_id, blogs.created_at, users.id, users.name FROM blogs JOIN users ON users.id = blogs.user_id";
+$blog = new blog();
+$result = $blog->getAllBlogs();
 
-$result = $connection->query($query);
 if ($result->num_rows == 0) {
     echo '<div>
             <div class="card">
@@ -15,7 +13,6 @@ if ($result->num_rows == 0) {
                 </div>
             </div>
         </div>';
-    $connection->close();
 }
 else{
     $blogs = $result->fetch_all(MYSQLI_ASSOC);
@@ -39,7 +36,6 @@ else{
                 </div>
             </div>';
     }
-    $connection->close();
 }
 
 ?>
