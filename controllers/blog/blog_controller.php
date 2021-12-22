@@ -50,7 +50,9 @@ if (isset($_POST['add_blog_button'])) {
 
 // Delete Blog
 elseif (isset($_GET['delete_id']) && isset($_SESSION['username'])) {
-    include '../../includes/dbh-inc.php';
+    include '../../routes/web.php';
+    //database connection file.
+    require '../../'.$db_connection;
 
     $blog_id = $_GET['delete_id'];
     $user_id = $_SESSION['user_id'];
@@ -67,7 +69,7 @@ elseif (isset($_GET['delete_id']) && isset($_SESSION['username'])) {
     $connection->close();
 
     //redirecting to index page.
-    header("Location: ../../user_blogs.php");
+    header("Location: ../../".$user_blogs_page);
 }
 
 // Update Blog

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php 
     session_start();
-    include 'routes/web.php';
+    include '../../routes/web.php';
     if(!isset($_SESSION['username'])){
         header("Location: ../test/".$homepage);
     } 
@@ -20,7 +20,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <!-- Custom CSS -->
-    <link type="text/css" rel="stylesheet" href="css/custom.css">
+    <link type="text/css" rel="stylesheet" href="../../css/custom.css">
 </head>
 <body>
     <!-- Navbar file -->
@@ -32,8 +32,8 @@
             <h3>Update Blog</h3>
         </div>
         <div class="card-body">
-            <form action="<?php echo $blog_controller ?>" method="POST">
-                <?php include $get_update_blog ?>
+            <form action="../../<?php echo $blog_controller ?>" method="POST">
+                <?php include '../../'.$get_update_blog ?>
             </form>
         </div>
     </div>

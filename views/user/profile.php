@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <?php 
     session_start();
-    include 'routes/web.php';
+    include '../../routes/web.php';
     if(!isset($_SESSION['username'])){
-        header("Location: ../test/".$homepage);
+        header("Location: ../../".$homepage);
     } 
 ?>
 <html lang="en">
@@ -20,7 +20,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <!-- Custom CSS -->
-    <link type="text/css" rel="stylesheet" href="css/custom.css">
+    <link type="text/css" rel="stylesheet" href="../../css/custom.css">
 </head>
 <body>
     <!-- Navbar file -->
@@ -32,11 +32,11 @@
             <h3>Profile</h3>
         </div>
         <div class="card-body">
-            <form action="<?php echo $user_controller ?>" method="POST" enctype="multipart/form-data">
+            <form action="../../<?php echo $user_controller ?>" method="POST" enctype="multipart/form-data">
                 <div class="row">
                     <div class="col-5" style="margin-left: 80px;">
                         <div class="mt-3">
-                            <img id="profile_pic" src="<?php echo $_SESSION['profile_pic'] ?>">
+                            <img id="profile_pic" src="../../<?php echo $_SESSION['profile_pic'] ?>">
                             <input class="mt-3" type="file" name="profile_pic" style="margin-left: 80px;">
                         </div>
                     </div>
@@ -94,7 +94,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
     <!-- Custom JavaScript File -->
-    <script type="text/javascript" src="js/custom.js"></script>
+    <script type="text/javascript" src="../../js/custom.js"></script>
 
 </body>
 </html>

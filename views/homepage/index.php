@@ -14,16 +14,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <!-- Custom CSS -->
-    <link type="text/css" rel="stylesheet" href="css/custom.css">
+    <link type="text/css" rel="stylesheet" href="../../css/custom.css">
 </head>
 <body>
-    <?php include 'routes/web.php';?>
+    <?php include '../../routes/web.php';?>
     <!-- Navbar file -->
     <?php include($navbar) ?>
 
     <!-- Homepage content -->
     <div class="row card_center">
-        <?php include 'includes/blog/get_all_blogs.php';?>
+        <?php include '../../'.$get_all_blogs;?>
     </div>
 
     <!-- Notification file -->
@@ -48,7 +48,7 @@
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
     <!-- Custom JavaScript File -->
-    <script type="text/javascript" src="js/custom.js"></script>
+    <script type="text/javascript" src="../../js/custom.js"></script>
 
 </body>
 </html>

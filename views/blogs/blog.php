@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php 
     session_start();
-    include 'routes/web.php';
+    include '../../routes/web.php';
 ?>
 <html lang="en">
 <head>
@@ -17,7 +17,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <!-- Custom CSS -->
-    <link type="text/css" rel="stylesheet" href="css/custom.css">
+    <link type="text/css" rel="stylesheet" href="../../css/custom.css">
 </head>
 <body>
     <!-- Navbar file -->
@@ -25,17 +25,17 @@
 
     <!-- Profile content -->
     <div class="card" id="profile">
-        <?php include $get_blog ?>
+        <?php include '../../'.$get_blog ?>
         <div class="card-body">
             <h5 class="card-title">Comments</h5>
             <?php
                 if (isset($_SESSION['username'])) {
                     echo '<div class="row mt-3">
                             <div class="col-1">
-                                <img id="profile_pic_navbar" src="'.$_SESSION['profile_pic'].'" style="margin-left: 25px;">
+                                <img id="profile_pic_navbar" src="../../'.$_SESSION['profile_pic'].'" style="margin-left: 25px;">
                             </div>
                             <div class="col">
-                                <form action="'.$comment_controller.'" method="POST">
+                                <form action="../../'.$comment_controller.'" method="POST">
                                     <input type="hidden" name="blog_id" value="'.$_GET['blog_id'].'">
                                     <input type="text" class="form-control" name="comment" placeholder="Add Comment...">
                                     <div class="d-flex justify-content-end">
@@ -46,7 +46,7 @@
                         </div>';
                 }
             ?>
-            <?php include $get_comments ?>
+            <?php include '../../'.$get_comments ?>
         </div>
     </div>
 
@@ -64,7 +64,7 @@
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
     <!-- Custom JavaScript File -->
-    <script type="text/javascript" src="js/custom.js"></script>
+    <script type="text/javascript" src="../../js/custom.js"></script>
 
 </body>
 </html>
