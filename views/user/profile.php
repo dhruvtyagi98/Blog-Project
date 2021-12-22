@@ -42,7 +42,6 @@
                     </div>
                     <div class="col-5">
                         <div class="mb-3">
-                            <input type="hidden" name="user_id" id="user_id" value="<?php echo $_SESSION['user_id'] ?>">
                             <label for="name">Name</label>
                             <input class="form-control" type="text" name="name" value="<?php echo $_SESSION['username'] ?>">
                             <div class="error empty_name">
@@ -51,7 +50,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="email">Email</label>
-                            <input class="form-control" type="email" value="<?php echo $_SESSION['email'] ?>" disabled>
+                            <input class="form-control" id="user_email" type="email" value="<?php echo $_SESSION['email'] ?>" disabled>
                         </div>
                         <div class="mb-3">
                             <label for="password">Old Password</label>

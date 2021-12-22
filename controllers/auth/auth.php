@@ -6,8 +6,7 @@ session_start();
 if (isset($_POST['login_button'])) {
     
     include '../../routes/web.php';
-    //database connection file.
-    require '../../'.$db_connection;
+    include '../../models/user_model.php';
 
     $email    = $_POST['email'];
     $password = $_POST['password'];
@@ -15,27 +14,23 @@ if (isset($_POST['login_button'])) {
     //checking if the user submitted all the required fields or not.
     if (empty($email)) {
         $_SESSION['login_email_empty'] = 'Email is Required!';
-        $connection->close();
         header("Location: ../../".$homepage);
     }
     if (empty($password)) {
         $_SESSION['login_password_empty'] = 'password is Required!';
-        $connection->close();
         header("Location: ../../".$homepage);
     }
     elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $_SESSION['invalid_email_login'] = 'Invalid Email!';
-        $connection->close();
         header("Location: ../../".$homepage);
     }
     else{
-
+        $user = new user();
         //checking if the email is present or not.
         $query_email = "SELECT * FROM users WHERE email = '$email'";
-        $result = $connection->query($query_email);
+        $result = $user->getUser($email);
         if ($result->num_rows == 0) {
             $_SESSION['email_not_found'] = 'Email Not Found!';
-            $connection->close();
             header("Location: ../../".$homepage);
         }
         else{
@@ -48,12 +43,10 @@ if (isset($_POST['login_button'])) {
                 $_SESSION['username'] = $user['name'];
                 $_SESSION['email'] = $user['email'];
                 $_SESSION['profile_pic'] = $user['profile_pic'];
-                $connection->close();
                 header("Location: ../../".$homepage);
             }
             else{
                 $_SESSION['invalid_password'] = 'Invalid Password';
-                $connection->close();
                 header("Location: ../../".$homepage);
             }
         }
@@ -64,8 +57,7 @@ if (isset($_POST['login_button'])) {
 elseif (isset($_POST["register_button"])) {
 
     include '../../routes/web.php';
-    //database connection file.
-    require '../../'.$db_connection;
+    include '../../models/user_model.php';
 
     $name             = $_POST['name'];
     $email            = $_POST['email'];
@@ -75,31 +67,27 @@ elseif (isset($_POST["register_button"])) {
     //checking if the user submitted all the required fields or not.
     if (empty($name) || empty($email) || empty($password)) {
         $_SESSION['register_error'] = 'Empty Fields!';
-        $connection->close();
         header("Location: ../../".$homepage);
     }
 
     elseif($confirm_password != $password){
         $_SESSION['password_mismatch'] = 'Password does Not Match!';
-        $connection->close();
         header("Location: ../../".$homepage);
     }
 
     elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $_SESSION['invalid_email'] = 'Invalid Email!';
-        $connection->close();
         header("Location: ../../".$homepage);
     }
 
     else{
 
+        $user = new user();
         //checking if the email is already present or not.
-        $query_email = "SELECT email FROM users WHERE email = '$email'";
-        $result = $connection->query($query_email);
+        $result = $user->getUser($email);
 
         if ($result->num_rows > 0) {
             $_SESSION['email_error'] = 'Email Already Present!';
-            $connection->close();
             header("Location: ../../".$homepage);
         }
 
@@ -107,18 +95,12 @@ elseif (isset($_POST["register_button"])) {
             //hashing password.
             $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-            //MySQL query to inset into database
-            $query = "INSERT into users (name, email, password) VALUES ('$name', '$email', '$hashed_password')";
-
             //quering database and checking for database error.
-            if ($connection->query($query) == true) 
+            if ($user->add($name, $email, $hashed_password) == true) 
                 $_SESSION['registered'] = 'Successfully Registered!';
             
             else
                 $_SESSION['database_error'] = $connection->error;
-
-            //closing database connection.
-            $connection->close();
 
             //redirecting to index page.
             header("Location: ../../".$homepage);

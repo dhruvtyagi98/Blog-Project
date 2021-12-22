@@ -29,4 +29,4 @@ $get_users          = "controllers/user/get_users.php";
 $user_controller    = "controllers/user/user_controller.php";
 
 // Database connection file route
-$db_connection      = "controllers/models/dbh-inc.php";
+$db_connection      = "models/dbh-inc.php";

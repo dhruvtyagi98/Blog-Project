@@ -46,7 +46,7 @@
                         </div>';
                 }
             ?>
-            <?php include '../../'.$get_comments ?>
+            <?php include '../../'.$comment_controller ?>
         </div>
     </div>
 

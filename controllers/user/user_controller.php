@@ -5,8 +5,7 @@ session_start();
 if(isset($_POST['profile_button'])){
 
     include '../../routes/web.php';
-    //database connection file.
-    require '../../'.$db_connection;
+    include '../../models/user_model.php';
 
     $name             = $_POST['name'];
     $id               = $_POST['user_id'];
@@ -16,25 +15,20 @@ if(isset($_POST['profile_button'])){
     //checking if the user submitted all the required fields or not.
     if (empty($name)) {
         $_SESSION['empty_name'] = 'Name is Required!';
-        $connection->close();
         header("Location: ../../".$profile_page);
     }
     else{
-
+        $user = new user();
         // If only the name is to be changed
         if(empty($password) && empty($profile_pic['name'])){
-            $query = "UPDATE users SET name = '$name' where id = '$id'";
 
             //quering database and checking for database error.
-            if ($connection->query($query) == true){ 
+            if ($user->updateName($name, $id) == true){ 
                 $_SESSION['update_name'] = 'Name Changed Successfully!';
                 $_SESSION['username'] = $name;
             }
             else
-                $_SESSION['database_error'] = $connection->error;
-
-            //closing database connection.
-            $connection->close();
+                $_SESSION['database_error'] = 'Something Went Wrong!';
 
             //redirecting to profile page.
             header("Location: ../../".$profile_page);
@@ -45,17 +39,12 @@ if(isset($_POST['profile_button'])){
 
             $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-            $query = "UPDATE users SET name = '$name',password = '$hashed_password' where id = '$id'";
-
             //quering database and checking for database error.
-            if ($connection->query($query) == true) 
+            if ($user->updatePassword($name, $hashed_password, $id) == true) 
                 $_SESSION['update_password'] = 'Password Changed Successfully!';
             
             else
-                $_SESSION['database_error'] = $connection->error;
-
-            //closing database connection.
-            $connection->close();
+                $_SESSION['database_error'] = 'Something Went Wrong!';
 
             //redirecting to profile page.
             header("Location: ../../".$profile_page);
@@ -69,31 +58,25 @@ if(isset($_POST['profile_button'])){
 
             if($file_type != "jpg" && $file_type != "png" && $file_type != "jpeg") {
                 $_SESSION['file_format'] = "Incorrect File Format!";
-                $connection->close();
 
                 //redirecting to profile page.
                 header("Location: ../../".$profile_page);
             }
             else{
                 if (move_uploaded_file($profile_pic['tmp_name'], "../../".$file_name)) {
-                    $query = "UPDATE users SET name = '$name', profile_pic = '$file_name' where id = '$id'";
 
                     //quering database and checking for database error.
-                    if ($connection->query($query) == true){
+                    if ($user->updateProfilePic($name, $file_name, $id) == true){
                         $_SESSION['update_profile_pic'] = 'Profile Picture Changed Successfully!';
                         $_SESSION['profile_pic'] = $file_name;
                     }
                     else
-                        $_SESSION['database_error'] = $connection->error;
-
-                    //closing database connection.
-                    $connection->close();
+                        $_SESSION['database_error'] = 'Something Went Wrong!';
 
                     //redirecting to profile page.
                     header("Location: ../../".$profile_page);
                 } 
                 else {
-                    print_r($profile_pic);
                     echo "Sorry, there was an error uploading your file.";
                 }
             }
@@ -109,31 +92,25 @@ if(isset($_POST['profile_button'])){
 
             if($file_type != "jpg" && $file_type != "png" && $file_type != "jpeg") {
                 $_SESSION['file_format'] = "Incorrect File Format!";
-                $connection->close();
 
                 //redirecting to profile page.
                 header("Location: ../../".$profile_page);
             }
             else{
                 if (move_uploaded_file($profile_pic['tmp_name'], "../../".$file_name)) {
-                    $query = "UPDATE users SET name = '$name', password = '$hashed_password', profile_pic = '$file_name' where id = '$id'";
 
                     //quering database and checking for database error.
-                    if ($connection->query($query) == true){
+                    if ($user->updateAll($name, $hashed_password, $file_name, $id) == true){
                         $_SESSION['update_profile_pic'] = 'Profile Picture Changed Successfully!';
                         $_SESSION['profile_pic'] = $file_name;
                     }
                     else
-                        $_SESSION['database_error'] = $connection->error;
-
-                    //closing database connection.
-                    $connection->close();
+                        $_SESSION['database_error'] = 'Something Went Wrong!';
 
                     //redirecting to profile page.
                     header("Location: ../../".$profile_page);
                 } 
                 else {
-                    print_r($profile_pic);
                     echo "Sorry, there was an error uploading your file.";
                 }
             }
@@ -144,17 +121,14 @@ if(isset($_POST['profile_button'])){
 elseif (isset($_GET['change_status']) && isset($_SESSION['username'])) {
     
     include '../../routes/web.php';
-    //database connection file.
-    require '../../'.$db_connection;
+    include '../../models/user_model.php';
 
     $id = $_SESSION['user_id'];
 
     $current_time = date('Y-m-d H:i:s');
 
-    $query = "UPDATE users SET last_activity = '$current_time' WHERE id = '$id'";
-
-    $connection->query($query);
-    $connection->close();
+    $user = new user();
+    $user->changeStatus($current_time, $id);
 }
 
 else {
