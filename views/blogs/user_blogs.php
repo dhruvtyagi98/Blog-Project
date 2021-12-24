@@ -3,7 +3,7 @@
     session_start();
     include '../../routes/web.php';
     if(!isset($_SESSION['username'])){
-        header("Location: ../test/".$homepage);
+        header("Location: ../../".$homepage);
     } 
 ?>
 <html lang="en">
